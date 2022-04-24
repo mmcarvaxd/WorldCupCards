@@ -1,0 +1,74 @@
+﻿<Window x:Class="AlbumCopaClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AlbumCopaClient" xmlns:views="clr-namespace:AlbumCopaClient.Views"
+        mc:Ignorable="d"
+        Title="Gerenciador Album Copa" Height="450" Width="800">
+    <Grid>
+        <TabControl Style="{StaticResource MaterialDesignTabControl}" ItemContainerStyle="{StaticResource MaterialDesignNavigationRailTabItem}" Padding="auto">
+            <TabItem
+                Width="auto"
+                >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon 
+                            Kind="Account" 
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                        <TextBlock
+                            Text="Jogadores" 
+                            Margin="4 0 0 0"
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                    </StackPanel>
+                </TabItem.Header>
+                <views:PlayerCardView/>
+            </TabItem>
+            <TabItem 
+                Width="auto"
+                >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon 
+                            Kind="AccountGroup" 
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                        <TextBlock
+                            Text="Seleções" 
+                            Margin="4 0 0 0"
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                    </StackPanel>
+                </TabItem.Header>
+                <DataGrid/>
+            </TabItem>
+            <TabItem 
+                Width="auto"
+                >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon 
+                            Kind="Stadium" 
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                        <TextBlock
+                            Text="Estádios" 
+                            Margin="4 0 0 0"
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            />
+                    </StackPanel>
+                </TabItem.Header>
+                <DataGrid/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
