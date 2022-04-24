@@ -39,5 +39,14 @@ namespace AlbumCopaClient.Views
         {
             Model.GetPlayerCards();
         }
+
+        private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePlayerCardWindow createPlayerCardWindow = new CreatePlayerCardWindow(Application.Current.MainWindow);
+            bool result = createPlayerCardWindow.ShowDialog().Value;
+
+            if (result)
+                Model.GetPlayerCards();
+        }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using AlbumCopaClient.Core;
 using AlbumCopaClient.Entities;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,7 +12,7 @@ using System.Windows;
 
 namespace AlbumCopaClient.ViewModels
 {
-    public class PlayerCardViewModel : INotifyPropertyChanged
+    public class CreatePlayerCardViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -22,52 +20,44 @@ namespace AlbumCopaClient.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private BindingList<PlayerCard> _playerCardList;
+        private PlayerCard _playerCard;
 
-        public BindingList<PlayerCard> PlayerCardList
+        public PlayerCard PlayerCard
         {
-            get { return _playerCardList; }
+            get { return _playerCard; }
             set
             {
-                _playerCardList = value;
+                _playerCard = value;
                 OnPropertyChanged();
             }
         }
 
-        public PlayerCardViewModel()
+        public CreatePlayerCardViewModel()
         {
-
+            PlayerCard = new PlayerCard();
         }
 
-        public Task InitUC()
-        {
-            GetPlayerCards();
-            return Task.CompletedTask;
-        }
-
-        public async void GetPlayerCards()
+        public async Task<bool> CreateNewPlayerCard()
         {
             try
             {
                 RestClient client = new RestClient();
                 RestRequest request = new RestRequest(UriPaths.PlayerCard);
-                RestResponse response = await client.ExecuteGetAsync(request);
+                request.AddJsonBody(PlayerCard);
+                RestResponse response = await client.ExecutePostAsync(request);
 
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var pcl = JsonConvert.DeserializeObject<List<PlayerCard>>(response.Content);
-                    PlayerCardList = new BindingList<PlayerCard>(pcl);
-                }
-                else
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     throw new Exception($"{response.StatusCode}");
                 }
+
+                return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Ocorreu um erro ao buscar os jogadores.\nException: {ex.Message}", "Erro");
+                return false;
             }
         }
-
     }
 }

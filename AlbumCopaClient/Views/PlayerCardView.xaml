@@ -22,11 +22,25 @@
                 >
                 <materialDesign:PackIcon Kind="Reload"/>
             </Button>
-            <Button HorizontalAlignment="Center" Margin="4 0 0 0" Padding="auto" Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}">
+            <Button
+                Name="btnAddPlayer"
+                Click="btnAddPlayer_Click"
+                HorizontalAlignment="Center"
+                Margin="4 0 0 0" 
+                Padding="auto" 
+                Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}"
+                >
                 <materialDesign:PackIcon Kind="Plus"/>
             </Button>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding PlayerCardList,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignDataGrid}" AutoGenerateColumns="False">
+        <DataGrid 
+            Grid.Row="1" 
+            ItemsSource="{Binding PlayerCardList,UpdateSourceTrigger=PropertyChanged}" 
+            Style="{StaticResource MaterialDesignDataGrid}" 
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            AutoGenerateColumns="False"
+            >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nº da Carta" Width="*" Binding="{Binding CardNumber}">
                     

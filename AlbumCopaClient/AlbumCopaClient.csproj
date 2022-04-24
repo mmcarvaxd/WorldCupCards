@@ -98,13 +98,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\UriPaths.cs" />
+    <Compile Include="CreatePlayerCardWindow.xaml.cs">
+      <DependentUpon>CreatePlayerCardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\PlayerCard.cs" />
+    <Compile Include="ViewModels\CreatePlayerCardViewModel.cs" />
     <Compile Include="ViewModels\PlayerCardViewModel.cs" />
     <Compile Include="Views\PlayerCardView.xaml.cs">
       <DependentUpon>PlayerCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Page Include="CreatePlayerCardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
