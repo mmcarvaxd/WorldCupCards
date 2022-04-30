@@ -1,4 +1,5 @@
-﻿using AlbumCopaClient.ViewModels;
+﻿using AlbumCopaClient.Entities;
+using AlbumCopaClient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,42 @@ namespace AlbumCopaClient
     public partial class CreatePlayerCardWindow : Window
     {
         public CreatePlayerCardViewModel Model;
-        public CreatePlayerCardWindow(Window owner)
+
+        private PlayerCard _playerCardToUpdate;
+
+        public CreatePlayerCardWindow(Window owner, PlayerCard playerCardToUpdate = null)
         {
             InitializeComponent();
             this.Owner = owner;
             this.DataContext = new CreatePlayerCardViewModel();
             Model = DataContext as CreatePlayerCardViewModel;
+            _playerCardToUpdate = playerCardToUpdate;
+            this.Loaded += CreatePlayerCardWindow_Loaded;
+        }
+
+        private void CreatePlayerCardWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(_playerCardToUpdate != null)
+            {
+                btnCreatePlayerCard.Visibility = Visibility.Collapsed;
+                Model.InitUCToUpdate(_playerCardToUpdate);
+            }
+            else
+            {
+                btnUpdatePlayerCard.Visibility = Visibility.Collapsed;
+            }
         }
 
         private async void btnCreatePlayerCard_Click(object sender, RoutedEventArgs e)
         {
             var result = await Model.CreateNewPlayerCard();
+            if (result)
+                DialogResult = true;
+        }
+
+        private async void btnUpdatePlayerCard_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await Model.UpdatePlayerCard();
             if (result)
                 DialogResult = true;
         }

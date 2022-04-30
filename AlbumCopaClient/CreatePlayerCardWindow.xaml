@@ -89,5 +89,12 @@
             Grid.Row="5"
             Grid.ColumnSpan="2"
             />
+        <Button
+            Name="btnUpdatePlayerCard"
+            Click="btnUpdatePlayerCard_Click"
+            Content="Atualiza jogador"
+            Grid.Row="5"
+            Grid.ColumnSpan="2"
+            />
     </Grid>
 </Window>

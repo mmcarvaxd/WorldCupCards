@@ -1,4 +1,5 @@
-﻿using AlbumCopaClient.ViewModels;
+﻿using AlbumCopaClient.Entities;
+using AlbumCopaClient.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,30 @@ namespace AlbumCopaClient.Views
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
             CreatePlayerCardWindow createPlayerCardWindow = new CreatePlayerCardWindow(Application.Current.MainWindow);
+            bool result = createPlayerCardWindow.ShowDialog().Value;
+
+            if (result)
+                Model.GetPlayerCards();
+        }
+
+        private async void btnDeletePlayerCard_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerCard playerCard = (sender as Button).Tag as PlayerCard;
+
+            var result = MessageBox.Show($"Deseja Deletar a carta do jogador {playerCard.Description} ?", "Alerta", MessageBoxButton.YesNo);
+
+            if(result == MessageBoxResult.Yes)
+            {
+                var succeed = await Model.DeletePlayerCard(playerCard);
+                Model.GetPlayerCards();
+            }
+        }
+
+        private void btnEditPlayerCard_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerCard playerCard = (sender as Button).Tag as PlayerCard;
+
+            CreatePlayerCardWindow createPlayerCardWindow = new CreatePlayerCardWindow(Application.Current.MainWindow, playerCard);
             bool result = createPlayerCardWindow.ShowDialog().Value;
 
             if (result)

@@ -37,38 +37,61 @@
             Grid.Row="1" 
             ItemsSource="{Binding PlayerCardList,UpdateSourceTrigger=PropertyChanged}" 
             Style="{StaticResource MaterialDesignDataGrid}" 
+            CellStyle="{StaticResource DataGridCellStyle}"
+            ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
             CanUserAddRows="False"
             CanUserDeleteRows="False"
             AutoGenerateColumns="False"
+            IsReadOnly="True"
             >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nº da Carta" Width="*" Binding="{Binding CardNumber}">
+                <DataGridTextColumn Header="Nº da Carta" Width="*" Binding="{Binding CardNumber}" ElementStyle="{StaticResource DataGridElementStyle}">
                     
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Nome" Width="*" Binding="{Binding Description}">
+                <DataGridTextColumn Header="Nome" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Nº Camiseta" Width="*" Binding="{Binding ShirtNumber}">
+                <DataGridTextColumn Header="Nº Camiseta" Width="*" Binding="{Binding ShirtNumber}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Habilidade" Width="*" Binding="{Binding SkillNumber}">
+                <DataGridTextColumn Header="Habilidade" Width="*" Binding="{Binding SkillNumber}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Idade" Width="*" Binding="{Binding Age}">
+                <DataGridTextColumn Header="Idade" Width="*" Binding="{Binding Age}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Altura" Width="*" Binding="{Binding Height}">
+                <DataGridTextColumn Header="Altura" Width="*" Binding="{Binding Height}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Peso" Width="*" Binding="{Binding Weight}">
+                <DataGridTextColumn Header="Peso" Width="*" Binding="{Binding Weight}" ElementStyle="{StaticResource DataGridElementStyle}">
 
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Ações" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Grid>
-                                
-                            </Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button
+                                    Name="btnEditPlayerCard"
+                                    Click="btnEditPlayerCard_Click"
+                                    Tag="{Binding}"
+                                    Width="{Binding Path=ActualHeight,RelativeSource={RelativeSource Self}}"
+                                    Padding="auto"
+                                    VerticalAlignment="Center"
+                                    >
+                                    <materialDesign:PackIcon Kind="Edit"/>
+                                </Button>
+                                <Button
+                                    Name="btnDeletePlayerCard"
+                                    Click="btnDeletePlayerCard_Click"
+                                    Tag="{Binding}"
+                                    Width="{Binding Path=ActualHeight,RelativeSource={RelativeSource Self}}"
+                                    Padding="auto"
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    >
+                                    <materialDesign:PackIcon Kind="TrashCan"/>
+                                </Button>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -11,5 +11,7 @@ namespace AlbumCopaClient.Core
         public static Uri ApiUrl = new Uri("https://localhost:7235/");
 
         public static Uri PlayerCard = new Uri(ApiUrl, "PlayerCard");
+
+        public static Uri DeletePlayerCard(int id) => new Uri(ApiUrl, $"PlayerCard/{id}");
     }
 }

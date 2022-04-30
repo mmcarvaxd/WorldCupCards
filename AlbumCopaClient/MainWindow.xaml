@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AlbumCopaClient" xmlns:views="clr-namespace:AlbumCopaClient.Views"
         mc:Ignorable="d"
-        Title="Gerenciador Album Copa" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Gerenciador Album Copa" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl Style="{StaticResource MaterialDesignTabControl}" ItemContainerStyle="{StaticResource MaterialDesignNavigationRailTabItem}" Padding="auto">
             <TabItem

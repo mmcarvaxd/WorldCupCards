@@ -45,6 +45,9 @@ namespace AlbumCopaClient.ViewModels
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Busca as cartas de jogadores na API utilizando GET e exibe no datagrid.
+        /// </summary>
         public async void GetPlayerCards()
         {
             try
@@ -66,6 +69,32 @@ namespace AlbumCopaClient.ViewModels
             catch(Exception ex)
             {
                 MessageBox.Show($"Ocorreu um erro ao buscar os jogadores.\nException: {ex.Message}", "Erro");
+            }
+        }
+
+        /// <summary>
+        /// Deleta a carta de jogador na API utilizando DELETE.
+        /// </summary>
+        /// <param name="playerCardToDelete"></param>
+        /// <returns></returns>
+        public async Task<bool> DeletePlayerCard(PlayerCard playerCardToDelete)
+        {
+            try
+            {
+                RestClient client = new RestClient();
+                RestRequest request = new RestRequest(UriPaths.DeletePlayerCard(playerCardToDelete.CardNumber));
+                RestResponse response = await client.DeleteAsync(request);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception($"{response.StatusCode}");
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao deletar o jogador.\nException: {ex.Message}", "Erro");
+                return false;
             }
         }
 

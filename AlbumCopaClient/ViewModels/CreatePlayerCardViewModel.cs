@@ -37,6 +37,16 @@ namespace AlbumCopaClient.ViewModels
             PlayerCard = new PlayerCard();
         }
 
+        public Task InitUCToUpdate(PlayerCard playerCardToUpdate)
+        {
+            PlayerCard = playerCardToUpdate;
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Cria uma nova carta de jogador na API utilizando POST.
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> CreateNewPlayerCard()
         {
             try
@@ -45,6 +55,33 @@ namespace AlbumCopaClient.ViewModels
                 RestRequest request = new RestRequest(UriPaths.PlayerCard);
                 request.AddJsonBody(PlayerCard);
                 RestResponse response = await client.ExecutePostAsync(request);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception($"{response.StatusCode}");
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao buscar os jogadores.\nException: {ex.Message}", "Erro");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Edita uma carta de jogador na API utilizando PUT.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> UpdatePlayerCard()
+        {
+            try
+            {
+                RestClient client = new RestClient();
+                RestRequest request = new RestRequest(UriPaths.PlayerCard);
+                request.AddJsonBody(PlayerCard);
+                RestResponse response = await client.ExecutePutAsync(request);
 
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
