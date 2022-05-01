@@ -40,14 +40,14 @@
                             VerticalAlignment="Center"
                             />
                         <TextBlock
-                            Text="Seleções" 
+                            Text="Estádios" 
                             Margin="4 0 0 0"
                             Foreground="Black"
                             VerticalAlignment="Center"
                             />
                     </StackPanel>
                 </TabItem.Header>
-                <DataGrid/>
+                <views:StadiumCardView/>
             </TabItem>
             <TabItem 
                 Width="auto"
@@ -60,7 +60,7 @@
                             VerticalAlignment="Center"
                             />
                         <TextBlock
-                            Text="Estádios" 
+                            Text="Seleções" 
                             Margin="4 0 0 0"
                             Foreground="Black"
                             VerticalAlignment="Center"

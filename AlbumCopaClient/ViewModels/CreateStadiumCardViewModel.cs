@@ -1,0 +1,100 @@
+﻿using AlbumCopaClient.Core;
+using AlbumCopaClient.Entities;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace AlbumCopaClient.ViewModels
+{
+    public class CreateStadiumCardViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private StadiumCard _stadiumCard;
+
+        public StadiumCard StadiumCard
+        {
+            get { return _stadiumCard; }
+            set
+            {
+                _stadiumCard = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public CreateStadiumCardViewModel()
+        {
+            StadiumCard = new StadiumCard();
+        }
+
+        public Task InitUCToUpdate(StadiumCard playerCardToUpdate)
+        {
+            StadiumCard = playerCardToUpdate;
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Cria uma nova carta de estádio na API utilizando POST.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> CreateNewStadiumCard()
+        {
+            try
+            {
+                RestClient client = new RestClient();
+                RestRequest request = new RestRequest(UriPaths.StadiumCard);
+                request.AddJsonBody(StadiumCard);
+                RestResponse response = await client.ExecutePostAsync(request);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception($"{response.StatusCode}");
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao buscar os jogadores.\nException: {ex.Message}", "Erro");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Edita uma carta de jogador na API utilizando PUT.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> UpdateStadiumCard()
+        {
+            try
+            {
+                RestClient client = new RestClient();
+                RestRequest request = new RestRequest(UriPaths.StadiumCard);
+                request.AddJsonBody(StadiumCard);
+                RestResponse response = await client.ExecutePutAsync(request);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception($"{response.StatusCode}");
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao buscar os jogadores.\nException: {ex.Message}", "Erro");
+                return false;
+            }
+        }
+    }
+}

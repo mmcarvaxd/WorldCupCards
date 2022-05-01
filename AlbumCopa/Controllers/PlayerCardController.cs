@@ -8,20 +8,20 @@ namespace AlbumCopa.Controllers
     [Route("[controller]")]
     public class PlayerCardController : ControllerBase
     {
-
         [HttpGet]
-        public IEnumerable<PlayerCard> Get() {
+        public IEnumerable<PlayerCard> Get()
+        {
 
             return StoneAgeDatabase.GetPlayerCards();
         }
 
         [HttpGet("{Id}")]
-        public PlayerCard? GetById(int Id)
+        public PlayerCard? GetById(int id)
         {
-            return StoneAgeDatabase.GetPlayerCard(Id);
+            return StoneAgeDatabase.GetPlayerCard(id);
         }
 
-        [HttpPost(Name = "CreatePlayerCard")]
+        [HttpPost]
         public PlayerCard Create(PlayerCard playerCard)
         {
             return StoneAgeDatabase.CreatePlayerCard(playerCard);

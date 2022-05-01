@@ -101,15 +101,28 @@
     <Compile Include="CreatePlayerCardWindow.xaml.cs">
       <DependentUpon>CreatePlayerCardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateStadiumCardWindow.xaml.cs">
+      <DependentUpon>CreateStadiumCardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\PlayerCard.cs" />
+    <Compile Include="Entities\StadiumCard.cs" />
     <Compile Include="ViewModels\CreatePlayerCardViewModel.cs" />
+    <Compile Include="ViewModels\CreateStadiumCardViewModel.cs" />
     <Compile Include="ViewModels\PlayerCardViewModel.cs" />
+    <Compile Include="ViewModels\StadiumCardViewModel.cs" />
     <Compile Include="Views\PlayerCardView.xaml.cs">
       <DependentUpon>PlayerCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\StadiumCardView.xaml.cs">
+      <DependentUpon>StadiumCardView.xaml</DependentUpon>
+    </Compile>
     <Page Include="CreatePlayerCardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateStadiumCardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +143,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PlayerCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StadiumCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

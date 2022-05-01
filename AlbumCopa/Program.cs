@@ -1,3 +1,5 @@
+using AlbumCopa.DAO;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,4 +24,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+StoneAgeDatabase.PopulateStadiumCards();
+StoneAgeDatabase.PopulatePlayerCards();
+
 app.Run();
+
+

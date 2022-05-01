@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AlbumCopaClient"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Criar Carta de Jogador" Height="375" Width="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" WindowStyle="ToolWindow" ResizeMode="NoResize">
+        Title="Criar/Atualizar Carta de Jogador" Height="375" Width="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Grid Margin="8">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
