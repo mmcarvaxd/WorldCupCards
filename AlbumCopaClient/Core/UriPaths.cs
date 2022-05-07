@@ -8,7 +8,7 @@ namespace AlbumCopaClient.Core
 {
     public static class UriPaths
     {
-        public static Uri ApiUrl = new Uri("https://localhost:7235/");
+        public static Uri ApiUrl = new Uri("https://localhost:7235/"); //Mude o LocalHost caso necessário.
 
         public static Uri PlayerCard = new Uri(ApiUrl, "PlayerCard");
 
