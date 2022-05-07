@@ -8,6 +8,7 @@
 ## 🏆 Album da Copa Exemplo de CRUD
 
 Exemplo simples de uma API feita em ASP.NET 6 com GET, PUT, POST e DELETE.
+
 Sendo consumido por um Client feito em WPF com padrão MVVM.
 
 ## 📄 Features
