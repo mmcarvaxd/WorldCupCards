@@ -26,6 +26,7 @@ app.MapControllers();
 
 StoneAgeDatabase.PopulateStadiumCards();
 StoneAgeDatabase.PopulatePlayerCards();
+StoneAgeDatabase.PopulateManagerCards();
 
 app.Run();
 

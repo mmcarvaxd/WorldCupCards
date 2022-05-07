@@ -14,6 +14,8 @@ namespace AlbumCopaClient.Core
 
         public static Uri StadiumCard = new Uri(ApiUrl, "StadiumCard");
 
+        public static Uri ManagerCard = new Uri(ApiUrl, "ManagerCard");
+
         public static Uri DeletePlayerCard(int id) => new Uri(ApiUrl, $"PlayerCard/{id}");
         public static Uri DeleteStadiumCard(int id) => new Uri(ApiUrl, $"StadiumCard/{id}");
     }

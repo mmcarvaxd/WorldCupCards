@@ -55,19 +55,19 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon 
-                            Kind="Stadium" 
+                            Kind="AccountStar" 
                             Foreground="Black"
                             VerticalAlignment="Center"
                             />
                         <TextBlock
-                            Text="Seleções" 
+                            Text="Treinadores" 
                             Margin="4 0 0 0"
                             Foreground="Black"
                             VerticalAlignment="Center"
                             />
                     </StackPanel>
                 </TabItem.Header>
-                <DataGrid/>
+                <views:ManagerCardView/>
             </TabItem>
         </TabControl>
     </Grid>

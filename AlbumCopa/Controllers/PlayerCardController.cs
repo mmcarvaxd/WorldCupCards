@@ -11,7 +11,6 @@ namespace AlbumCopa.Controllers
         [HttpGet]
         public IEnumerable<PlayerCard> Get()
         {
-
             return StoneAgeDatabase.GetPlayerCards();
         }
 

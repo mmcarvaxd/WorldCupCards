@@ -4,8 +4,9 @@ namespace AlbumCopa.DAO
 {
     public static class StoneAgeDatabase
     {
-        private static List<PlayerCard> PlayerCards = new List<PlayerCard>();
-        private static List<StadiumCard> StadiumCards = new List<StadiumCard>();
+        private static List<PlayerCard> PlayerCards { get; set; } = new List<PlayerCard>();
+        private static List<StadiumCard> StadiumCards { get; set; } = new List<StadiumCard>();
+        private static List<ManagerCard> ManagerCards { get; set; } = new List<ManagerCard>();
 
 
         private static int NextId = 0;
@@ -125,6 +126,23 @@ namespace AlbumCopa.DAO
         }
         #endregion
 
+        #region ManagerCard
+        public static void PopulateManagerCards()
+        {
 
+            var managerCards = new List<ManagerCard>
+            {
+                new ManagerCard() { Description = "Carlo Ancelotti", Age = 63, Country="Itália", CurrentTeam = "Real Madrid", TotalTrophies = 20, CardNumber = NextId++},
+                new ManagerCard() { Description = "Pep Guardiola", Age = 51, Country="Espanha", CurrentTeam = "Manchester City", TotalTrophies = 15, CardNumber = NextId++},
+                new ManagerCard() { Description = "Vítor Pereira", Age = 53, Country="Portugal", CurrentTeam = "Corinthians", TotalTrophies = 10, CardNumber = NextId++},
+            };
+
+            ManagerCards.AddRange(managerCards);
+        }
+        public static List<ManagerCard> GetManagerCards()
+        {
+            return ManagerCards;
+        }
+        #endregion
     }
 }

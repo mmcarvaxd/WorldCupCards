@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="AlbumCopaClient.Views.ManagerCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlbumCopaClient.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Right" Margin="0 0 8 0" Orientation="Horizontal">
+            <Button 
+                Name="btnReload"
+                Click="btnReload_Click"
+                HorizontalAlignment="Center" 
+                Padding="auto" 
+                Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}"
+                >
+                <materialDesign:PackIcon Kind="Reload"/>
+            </Button>
+        </StackPanel>
+        <DataGrid 
+            Grid.Row="1" 
+            ItemsSource="{Binding ManagerCardList,UpdateSourceTrigger=PropertyChanged}" 
+            Style="{StaticResource MaterialDesignDataGrid}" 
+            CellStyle="{StaticResource DataGridCellStyle}"
+            ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nº da Carta" Width="*" Binding="{Binding CardNumber}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Nome" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Idade" Width="*" Binding="{Binding Age}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="País de Origem" Width="*" Binding="{Binding Country}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Time Atual" Width="*" Binding="{Binding CurrentTeam}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Total de Troféus" Width="*" Binding="{Binding TotalTrophies}" ElementStyle="{StaticResource DataGridElementStyle}">
+
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
